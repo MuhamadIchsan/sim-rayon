@@ -30,7 +30,6 @@
                         <thead class="bg-primary text-white">
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">NIK</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>                                                        
                             <th scope="col">Role</th>
@@ -38,23 +37,23 @@
                           </tr>
                         </thead>
                         <tbody>
-
                         <!-- foreach -->
+                        @foreach ($users as $user)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>11806718</td>
-                            <td>Mark</td>
-                            <td>mark@gmail.com</td>
-                            <td>BKK</td>                                                                              
+                            <th scope="row">{{ $nomor++ }}</th>  
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}/td>
+                            <td>{{ $user->role }}</td>                                                                              
                             <td>
-                                <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="" class="d-inline">
+                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
+                                <form method="POST" action="{{ route('user.destroy', $user->id) }}" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
                                 </form>
                             </td>
                           </tr>    
+                          @endforeach
                         <!-- endforeach -->
 
                         </tbody>
