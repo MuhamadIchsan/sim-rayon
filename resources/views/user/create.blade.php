@@ -50,7 +50,18 @@
                             <option value="kepsek">kepsek</option>                            
                         </select>
                     </div>
-                </div>                                               
+                </div>        
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">*PERHATIAN*(Pilih Nama rayon jika yang di daftarkan role PEMRAY jika tidak maka abaikan saja)</label>
+                    <div class="col-lg-8">
+                        <select class="form-control" name="nama_rayon" id="">
+                            <option disabled selected>Pilih Nama Rayon</option>
+                            @foreach ($rayons as $rayon)
+                                <option value="{{ $rayon->nama_rayon }}">{{ $rayon->nama_rayon }}</option>
+                            @endforeach                      
+                        </select>
+                    </div>
+                </div>                                           
                 <button class="btn btn-primary"> <i class="fas fa-check"></i> Selesai</button>
             </div>            
             </form>

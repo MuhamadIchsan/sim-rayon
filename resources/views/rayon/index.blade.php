@@ -30,26 +30,26 @@
                         <thead class="bg-primary text-white">
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama Rayon</th>
-                            <th scope="col">Nama Pembimbing</th>                            
+                            <th scope="col">Nama Rayon</th>                      
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
 
                         <!-- foreach -->
-                          <tr>
-                            <th scope="row">1</th>                            
-                            <td>Cisarua 1</td>
-                            <td>Asep</td>                            
+                        @foreach ($rayons as $rayon)
+                        <tr>
+                            <th scope="row">{{ $nomor++ }}</th>                             
+                            <td>{{ $rayon->nama_rayon }}</td>                   
                             <td>                                
-                                <form action="" class="d-inline">
+                                <form action="{{ route('rayon.destroy', $rayon->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
                                 </form>
                             </td>
                           </tr>    
+                        @endforeach
                         <!-- endforeach -->
 
                         </tbody>
