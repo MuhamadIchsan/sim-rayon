@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kumpul;
 use Illuminate\Http\Request;
 
 class KumpulRayonController extends Controller
@@ -13,7 +14,10 @@ class KumpulRayonController extends Controller
      */
     public function index()
     {
-        return view('kumpul.index');
+        return view('kumpul.index', [
+            'nomor' => 1,
+            'kumpuls' => Kumpul::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**
@@ -34,7 +38,9 @@ class KumpulRayonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        auth()->user()->kumpuls()->create($data);
+        return redirect()->route('kumpul_rayon.index'); 
     }
 
     /**
@@ -56,7 +62,9 @@ class KumpulRayonController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('kumpul.edit', [
+            'kumpul' => Kumpul::findOrFail($id)
+        ]);
     }
 
     /**
@@ -68,7 +76,8 @@ class KumpulRayonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Kumpul::findOrFail($id)->update($request->all());
+        return redirect()->route('kumpul_rayon.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class KumpulRayonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kumpul::findOrFail($id)->delete();
+        return back();
     }
 }
