@@ -41,21 +41,23 @@
                         <tbody>
 
                         <!-- foreach -->
+                        @foreach ($kumpuls as $kumpul)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>14 - 03 - 2021</td>
-                            <td>Selasa</td>
-                            <td>14:30</td>                            
-                            <td>Cisarua 1</td>                                                  
+                            <th scope="row">{{ $nomor++ }}</th>
+                            <td>{{ $kumpul->tanggal }}</td>
+                            <td>{{ $kumpul->hari }}</td>
+                            <td>{{ $kumpul->jam }}</td>                            
+                            <td>{{ $kumpul->user->nama_rayon }}</td>                                                  
                             <td>
-                                <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="" class="d-inline">
+                                <a href="{{ route('kumpul_rayon.edit', $kumpul->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
+                                <form action="{{ route('kumpul_rayon.destroy', $kumpul->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
                                 </form>
                             </td>
                           </tr>    
+                          @endforeach
                         <!-- endforeach -->
 
                         </tbody>
