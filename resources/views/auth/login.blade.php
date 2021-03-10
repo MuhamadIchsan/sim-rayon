@@ -20,7 +20,7 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
           <img src="{{ asset('assets/img/wk.png') }}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal"><span class="font-weight-bold">WK Kantin</span></h4>
+            <h4 class="text-dark font-weight-normal"><span class="font-weight-bold">SIM Rayon</span></h4>
             @if(session('error'))                                    
                     <div class="alert alert-danger alert-dismissible show fade">
                       <div class="alert-body">
@@ -31,7 +31,7 @@
                       </div>
                     </div>
             @endif
-            <form method="POST" action="{{ route('login') }}" class="needs-validation">
+            <form method="POST" action="" class="needs-validation">
               @csrf
               <div class="form-group">
                 <label for="email">Email</label>
@@ -72,7 +72,7 @@
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
-                <h1 class="mb-2 display-4 font-weight-bold">Kantin Wikrama</h1>
+                <h1 class="mb-2 display-4 font-weight-bold">SMK Wikrama</h1>
                 <h5 class="font-weight-normal text-muted-transparent">Bogor, Indonesia</h5>
               </div>             
             </div>

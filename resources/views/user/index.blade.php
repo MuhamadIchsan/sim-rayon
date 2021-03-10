@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('pageTitle','Data Rayon')
-@section('title','Data Rayon')
+@section('pageTitle','User')
+@section('title','User')
 @section('content')
 <div class="container-fluid">
 
@@ -18,20 +18,22 @@
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <h5>Data Rayon</h5>                                            
+                    <h5>User</h5>                                            
                 </div>                
             </div>
         </div>        
         <div class="card-body">
-        <a href="{{ route('rayon.create') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Tambah Rayon</a>
-            <div class="section-title">List Rayon</div>            
+        <a href="{{ route('user.create') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Tambah User</a>
+            <div class="section-title">Data User</div>            
                     <div class="table-responsive">
                       <table class="table table-sm">
                         <thead class="bg-primary text-white">
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama Rayon</th>
-                            <th scope="col">Nama Pembimbing</th>                            
+                            <th scope="col">NIK</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Email</th>                                                        
+                            <th scope="col">Role</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
@@ -39,10 +41,13 @@
 
                         <!-- foreach -->
                           <tr>
-                            <th scope="row">1</th>                            
-                            <td>Cisarua 1</td>
-                            <td>Asep</td>                            
-                            <td>                                
+                            <th scope="row">1</th>
+                            <td>11806718</td>
+                            <td>Mark</td>
+                            <td>mark@gmail.com</td>
+                            <td>BKK</td>                                                                              
+                            <td>
+                                <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
                                 <form action="" class="d-inline">
                                     @csrf
                                     @method('DELETE')

@@ -14,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard.index');
+    return view('auth.login');
 });
-
+Route::resource('dashboard','DashboardController');
 Route::resource('piket','PiketController');
 Route::resource('kumpul_rayon','KumpulRayonController'); 
 Route::resource('absen_piket','AbsenPiketController');
 Route::resource('absen_rayon','AbsenRayonController');
 Route::resource('rayon','RayonController');
 Route::resource('user','UserController');
-Route::resource('pembimbing','PembimbingController');
