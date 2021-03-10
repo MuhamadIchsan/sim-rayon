@@ -33,6 +33,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>                                                        
                             <th scope="col">Role</th>
+                            <th scope="col">Rayon</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
@@ -43,7 +44,14 @@
                             <th scope="row">{{ $nomor++ }}</th>  
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>                                                                              
+                            <td>{{ $user->role }}</td>      
+                            <td>
+                              @if($user->nama_rayon)
+                                {{ $user->nama_rayon }}  
+                              @else
+                                BUKAN PEMRAY
+                              @endif
+                            </td>                                                                        
                             <td>
                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
                                 <form method="POST" action="{{ route('user.destroy', $user->id) }}" class="d-inline">

@@ -14,7 +14,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="nama Siswa">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="nama user">
                         @error('name')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
