@@ -11,7 +11,10 @@
               <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">            
                 <i class="far fa-user"></i>
                 <div class="d-sm-none d-lg-inline-block">
-                  User 
+                  {{ Str::upper(auth()->user()->name) }}
+                  @if(auth()->user()->nama_rayon)
+                    ({{ auth()->user()->nama_rayon }})  
+                  @endif            
                   <!-- nama user  -->
                 </div>
             </a>
