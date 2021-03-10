@@ -11,6 +11,7 @@
               <li class="{{ request()->is('dashboard') ? 'active' : '' }}{{ request()->is('dashboard/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard.index') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a>
               </li>              
+              @if(auth()->user()->role == "pemray")
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar"></i><span>Jadwal</span></a>
                 <ul class="dropdown-menu">
@@ -33,6 +34,7 @@
                   </li>     
                 </ul>
               </li>
+              @endif
               <li class="{{ request()->is('rayon') ? 'active' : '' }}{{ request()->is('rayon/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('rayon.index') }}"><i class="fas fa-building"></i> <span>Rayon</span></a>
               </li>                            
