@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rayon;
 use Illuminate\Http\Request;
 
 class RayonController extends Controller
@@ -13,7 +14,10 @@ class RayonController extends Controller
      */
     public function index()
     {
-        return view('rayon.index');
+        return view('rayon.index', [
+            'nomor' => 1,
+            'rayons' => Rayon::all()
+        ]);
     }
 
     /**
@@ -34,7 +38,8 @@ class RayonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Rayon::create($request->all());
+        return redirect()->route('rayon.index');
     }
 
     /**
@@ -79,6 +84,7 @@ class RayonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Rayon::findOrFail($id)->delete();
+        return back();
     }
 }

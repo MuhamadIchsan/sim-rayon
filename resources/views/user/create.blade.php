@@ -8,59 +8,60 @@
             <div class="card-header">
                 <h5>Tambah User</h5>
             </div>
-            
-            <form action="" method="POST">
+            <form action="{{ route('user.store') }}" method="POST">
             @csrf
             <div class="card-body">                
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">NIK</label>
-                    <div class="col-lg-8">
-                        <input type="text" class="form-control @error('') is-invalid @enderror" name="" placeholder="NIS Siswa">
-                        @error('')
-                        <small class="text-danger">{{$message}}</small>
-                        @enderror
-                    </div>
-                </div>                
-                <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control @error('') is-invalid @enderror" name="" placeholder="Nama">
-                        @error('')
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="nama user">
+                        @error('name')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
-                </div>                
+                </div>             
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Email</label>
                     <div class="col-lg-8">
-                        <input type="email" class="form-control @error('') is-invalid @enderror" name="" placeholder="E-mail">
-                        @error('')
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-mail">
+                        @error('email')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
-                </div>                
+                </div>                     
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Email</label>
+                    <label class="col-sm-2 col-form-label">Password</label>
                     <div class="col-lg-8">
-                        <input type="password" class="form-control @error('') is-invalid @enderror" name="" placeholder="Password">
-                        @error('')
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="password">
+                        @error('password')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
-                </div>                
+                </div>    
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Role</label>
                     <div class="col-lg-8">
-                        <select class="form-control @error('') is-invalid @enderror" name="" id="">
-                            <option value=""></option>
-                            <option value="Admin">Admin</option>
-                            <option value="Guru">Guru</option>
-                            <option value="Pembimbing Rayon">Pembimbing Rayon</option>
-                            <option value="BKK">BKK</option>
-                            <option value="Kepala Sekolah">Kepala Sekolah</option>                            
+                        <select class="form-control" name="role" id="">
+                            <option disabled selected>Pilih Role</option>
+                            <option value="admin">admin</option>
+                            <option value="guru">guru</option>
+                            <option value="pemray">pemray</option>
+                            <option value="bkk">bkk</option>
+                            <option value="kepsek">kepsek</option>                            
                         </select>
                     </div>
-                </div>                                               
+                </div>        
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">*PERHATIAN*(Pilih Nama rayon jika yang di daftarkan role PEMRAY jika tidak maka abaikan saja)</label>
+                    <div class="col-lg-8">
+                        <select class="form-control" name="nama_rayon" id="">
+                            <option disabled selected>Pilih Nama Rayon</option>
+                            @foreach ($rayons as $rayon)
+                                <option value="{{ $rayon->nama_rayon }}">{{ $rayon->nama_rayon }}</option>
+                            @endforeach                      
+                        </select>
+                    </div>
+                </div>                                           
                 <button class="btn btn-primary"> <i class="fas fa-check"></i> Selesai</button>
             </div>            
             </form>

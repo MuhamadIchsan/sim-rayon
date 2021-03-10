@@ -11,6 +11,7 @@
               <li class="{{ request()->is('dashboard') ? 'active' : '' }}{{ request()->is('dashboard/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard.index') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a>
               </li>              
+              @if(auth()->user()->role == "pemray")
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar"></i><span>Jadwal</span></a>
                 <ul class="dropdown-menu">
@@ -33,13 +34,16 @@
                   </li>     
                 </ul>
               </li>
+              @endif
+              @if(auth()->user()->role == "admin")
               <li class="{{ request()->is('rayon') ? 'active' : '' }}{{ request()->is('rayon/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('rayon.index') }}"><i class="fas fa-building"></i> <span>Rayon</span></a>
               </li>                            
               <!-- tambah user & pembimbing rayon hanya bisa diakses oleh admin -->
               <li class="{{ request()->is('user') ? 'active' : '' }}{{ request()->is('user/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>Tambah User</span></a>
-              </li>                                                                   
+              </li>       
+              @endif                                                            
             </ul>            
         </aside>
       </div>

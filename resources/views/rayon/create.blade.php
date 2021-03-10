@@ -9,27 +9,18 @@
                 <h5>Tambah Rayon</h5>
             </div>
             
-            <form action="" method="POST">
+            <form action="{{ route('rayon.store') }}" method="POST">
             @csrf
             <div class="card-body">                
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Nama Rayon</label>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control @error('') is-invalid @enderror" name="" placeholder="Nama Rayon">
-                        @error('')
+                        <input type="text" class="form-control @error('nama_rayon') is-invalid @enderror" name="nama_rayon" placeholder="Nama Rayon">
+                        @error('nama_rayon')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
-                </div>                                             
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama Pembimbing</label>
-                    <div class="col-lg-8">
-                        <select class="form-control @error('') is-invalid @enderror" name="" id="">                        
-                            <!-- nama pembimbing sesuai diambil berdasarkan data pembimbing -->
-                            <option value="">nama</option>
-                        </select>
-                    </div>
-                </div>                
+                </div>                         
                 <button class="btn btn-primary"> <i class="fas fa-check"></i> Selesai</button>
             </div>            
             </form>

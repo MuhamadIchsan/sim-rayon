@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Rayon;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        return view('user.index', [
+            'nomor' => 1,
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -23,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('user.create', [
+            'rayons' => Rayon::all()
+        ]);
     }
 
     /**
@@ -34,7 +41,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['password'] = bcrypt(request('password'));
+        User::create($data);
+        return redirect()->route('user.index');
     }
 
     /**
@@ -56,7 +66,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.edit', [
+            'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
@@ -68,7 +80,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::findOrFail($id)->update($request->all());
+        return redirect()->route('user.index');
     }
 
     /**
@@ -79,6 +92,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+        return back();
     }
 }
