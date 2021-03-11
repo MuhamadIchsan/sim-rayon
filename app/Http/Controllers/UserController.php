@@ -44,7 +44,7 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt(request('password'));
         User::create($data);
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('notif', 'Data disimpan');
     }
 
     /**
@@ -81,7 +81,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         User::findOrFail($id)->update($request->all());
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('notif', 'Data diupdate');
     }
 
     /**
@@ -93,6 +93,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        return back();
+        return back()->with('notif', 'Data dihapus');
     }
 }
