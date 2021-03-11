@@ -24,7 +24,6 @@
             </div>
         </div>        
         <div class="card-body">
-        <a href="{{ route('kumpul_rayon.create') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Tambah Jadwal</a>
             <div class="section-title">Jadwal</div>            
                     <div class="table-responsive">
                       <table class="table table-sm">
@@ -34,8 +33,7 @@
                             <th scope="col">Tanggal</th>
                             <th scope="col">Hari</th>
                             <th scope="col">Jam</th>                            
-                            <th scope="col">Rayon</th>                                                        
-                            <th scope="col">Action</th>
+                            <th scope="col">Rayon</th>           
                           </tr>
                         </thead>
                         <tbody>
@@ -47,15 +45,7 @@
                             <td>{{ $kumpul->tanggal }}</td>
                             <td>{{ $kumpul->hari }}</td>
                             <td>{{ $kumpul->jam }}</td>                            
-                            <td>{{ $kumpul->user->nama_rayon }}</td>                                                  
-                            <td>
-                                <a href="{{ route('kumpul_rayon.edit', $kumpul->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="{{ route('kumpul_rayon.destroy', $kumpul->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
-                                </form>
-                            </td>
+                            <td>{{ $kumpul->user->nama_rayon }}</td>   
                           </tr>    
                           @endforeach
                         <!-- endforeach -->

@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('pageTitle','Absen Rayon')
-@section('title','Absen Rayon')
+@section('pageTitle','Jadwal Piket Siswa')
+@section('title','Jadwal Piket')
 @section('content')
 <div class="container-fluid">
 
@@ -18,14 +18,13 @@
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <h5>Absen Rayon</h5>                        
+                    <h5>Jadwal Piket</h5>                        
                     <p>{{ now()->format('d,M Y') }}</p> 
                 </div>                
             </div>
         </div>        
         <div class="card-body">
-        <a href="{{ route('absen_rayon.create') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Absen Siswa</a>
-            <div class="section-title">Absen Rayon</div>            
+            <div class="section-title">Data Siswa</div>            
                     <div class="table-responsive">
                       <table class="table table-sm">
                         <thead class="bg-primary text-white">
@@ -34,32 +33,20 @@
                             <th scope="col">NIS</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Rayon</th>                            
-                            <th scope="col">Tanggal</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Hari</th>
                           </tr>
                         </thead>
                         <tbody>
 
                         <!-- foreach -->
-                        @foreach ($absenrayons as $data)
+                        @foreach ($pikets as $piket)
                           <tr>
                             <th scope="row">{{ $nomor++ }}</th>
-                            <td>{{ $data->nis }}</td>
-                            <td>{{ $data->nama }}</td>
-                            <td>{{ $data->user->nama_rayon }}</td>
-                            <td>{{ $data->tanggal }}</td>                            
-                            <td>{{ $data->kehadiran }}</td>                            
-                            <td>
-                                <a href="{{ route('absen_rayon.edit', $data->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="{{ route('absen_rayon.destroy', $data->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
-                                </form>
-                            </td>
+                            <td>{{ $piket->nis }}</td>
+                            <td>{{ $piket->nama }}</td>
+                            <td>{{ $piket->user->nama_rayon }}</td>
+                            <td>{{ $piket->hari }}</td>   
                           </tr>    
-                            
                           @endforeach
                         <!-- endforeach -->
 

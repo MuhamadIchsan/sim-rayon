@@ -36,4 +36,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pikets()
+    {
+        return $this->hasMany(Piket::class);
+    }
+
+    public function kumpuls()
+    {
+        return $this->hasMany(Kumpul::class);
+    }
+
+    public function absenpikets()
+    {
+        return $this->hasMany(Piket::class);
+    }
+
+    public function absenkehadirans()
+    {
+        return $this->hasMany(Piket::class);
+    }
 }

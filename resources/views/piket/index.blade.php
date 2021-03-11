@@ -41,21 +41,23 @@
                         <tbody>
 
                         <!-- foreach -->
+                        @foreach ($pikets as $piket)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>11806718</td>
-                            <td>Mark</td>
-                            <td>Cisarua 1</td>
-                            <td>Selasa</td>                            
+                            <th scope="row">{{ $nomor++ }}</th>
+                            <td>{{ $piket->nis }}</td>
+                            <td>{{ $piket->nama }}</td>
+                            <td>{{ $piket->user->nama_rayon }}</td>
+                            <td>{{ $piket->hari }}</td>                            
                             <td>
-                                <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="" class="d-inline">
+                                <a href="{{ route('piket.edit', $piket->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
+                                <form action="{{ route('piket.destroy', $piket->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
                                 </form>
                             </td>
                           </tr>    
+                          @endforeach
                         <!-- endforeach -->
 
                         </tbody>

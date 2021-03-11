@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Piket;
 use Illuminate\Http\Request;
 
 class PiketController extends Controller
@@ -13,7 +14,10 @@ class PiketController extends Controller
      */
     public function index()
     {
-        return view('piket.index');
+        return view('piket.index', [
+            'nomor' => 1,
+            'pikets' => Piket::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**
@@ -34,7 +38,9 @@ class PiketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        auth()->user()->pikets()->create($data);
+        return redirect()->route('piket.index')->with('notif', 'Data disimpan');   
     }
 
     /**
@@ -56,7 +62,9 @@ class PiketController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('piket.edit', [
+            'piket' => Piket::findOrFail($id)
+        ]);
     }
 
     /**
@@ -68,7 +76,8 @@ class PiketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Piket::findOrFail($id)->update($request->all());
+        return redirect()->route('piket.index')->with('notif', 'Data diupdate');
     }
 
     /**
@@ -79,6 +88,7 @@ class PiketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Piket::findOrFail($id)->delete();
+        return back()->with('notif', 'Data dihapus');
     }
 }

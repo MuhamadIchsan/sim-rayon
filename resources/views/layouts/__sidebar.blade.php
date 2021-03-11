@@ -43,7 +43,31 @@
               <li class="{{ request()->is('user') ? 'active' : '' }}{{ request()->is('user/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>Tambah User</span></a>
               </li>       
-              @endif                                                            
+              @endif 
+              @if(auth()->user()->role == "bkk" || auth()->user()->role == "guru" || auth()->user()->role == "kepsek")
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar"></i><span>Jadwal</span></a>
+                <ul class="dropdown-menu">
+                  <li class="{{ request()->is('piket') ? 'active' : '' }}{{ request()->is('piket/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('pengguna.jadwal_piket') }}"><span> Piket</span></a>
+                  </li>
+                  <li class="{{ request()->is('kumpul_rayon') ? 'active' : '' }}{{ request()->is('kumpul_rayon/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('pengguna.jadwal_kumpul') }}"><span>Kumpul Rayon</span></a>
+                  </li>     
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i><span>Absen</span></a>
+                <ul class="dropdown-menu">
+                  <li class="{{ request()->is('absen_piket') ? 'active' : '' }}{{ request()->is('absen_piket/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('pengguna.absen_piket') }}"><span>Absen Piket</span></a>
+                  </li>
+                  <li class="{{ request()->is('absen_rayon') ? 'active' : '' }}{{ request()->is('absen_rayon/*') ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ route('pengguna.absen_rayon') }}"><span>Absen Kehadiran</span></a>
+                  </li>     
+                </ul>
+              </li>
+              @endif                                                           
             </ul>            
         </aside>
       </div>

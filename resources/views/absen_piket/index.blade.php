@@ -18,7 +18,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <h5>Jadwal Piket</h5>                        
+                    <h5>Absen Piket</h5>                        
                     <p>{{ now()->format('d,M Y') }}</p> 
                 </div>                
             </div>
@@ -42,22 +42,24 @@
                         <tbody>
 
                         <!-- foreach -->
+                        @foreach ($absenpikets as $data)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>11806718</td>
-                            <td>Mark</td>
-                            <td>Cisarua 1</td>
-                            <td>Selasa</td>                            
-                            <td>Tidak Hadir</td>                            
+                            <th scope="row">{{ $nomor++ }}</th>
+                            <td>{{ $data->nis }}</td>
+                            <td>{{ $data->nama }}</td>
+                            <td>{{ $data->user->nama_rayon }}</td>                         
+                            <td>{{ $data->hari }}</td>   
+                            <td>{{ $data->kehadiran }}</td>                            
                             <td>
-                                <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="" class="d-inline">
+                                <a href="{{ route('absen_piket.edit', $data->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
+                                <form action="{{ route('absen_piket.destroy', $data->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
                                 </form>
                             </td>
                           </tr>    
+                          @endforeach
                         <!-- endforeach -->
 
                         </tbody>

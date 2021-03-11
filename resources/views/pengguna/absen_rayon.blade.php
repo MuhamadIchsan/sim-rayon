@@ -24,7 +24,6 @@
             </div>
         </div>        
         <div class="card-body">
-        <a href="{{ route('absen_rayon.create') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Absen Siswa</a>
             <div class="section-title">Absen Rayon</div>            
                     <div class="table-responsive">
                       <table class="table table-sm">
@@ -36,7 +35,6 @@
                             <th scope="col">Rayon</th>                            
                             <th scope="col">Tanggal</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -49,15 +47,7 @@
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->user->nama_rayon }}</td>
                             <td>{{ $data->tanggal }}</td>                            
-                            <td>{{ $data->kehadiran }}</td>                            
-                            <td>
-                                <a href="{{ route('absen_rayon.edit', $data->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="{{ route('absen_rayon.destroy', $data->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
-                                </form>
-                            </td>
+                            <td>{{ $data->kehadiran }}</td>    
                           </tr>    
                             
                           @endforeach

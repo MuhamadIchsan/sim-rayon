@@ -9,15 +9,15 @@
                 <h5>Edit Jadwal Kumpul</h5>
             </div>
             
-            <form action="" method="POST">
+            <form action="{{ route('kumpul_rayon.update', $kumpul->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="card-body">                
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Tanggal</label>
                     <div class="col-lg-8">
-                        <input type="date" class="form-control @error('') is-invalid @enderror" value="" name="" placeholder="NIS Siswa">
-                        @error('')
+                        <input type="date" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" value="{{ $kumpul->tanggal }}" placeholder="NIS Siswa">
+                        @error('tanggal')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -25,8 +25,8 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Jam</label>
                     <div class="col-lg-8">
-                        <input type="time" class="form-control @error('') is-invalid @enderror" value="" name="" placeholder="Nama Siswa">
-                        @error('')
+                        <input type="time" class="form-control @error('jam') is-invalid @enderror" name="jam" value="{{ $kumpul->jam }}" placeholder="Nama Siswa">
+                        @error('jam')
                         <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -34,13 +34,12 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Hari</label>
                     <div class="col-lg-8">
-                        <select class="form-control @error('') is-invalid @enderror" name="" id="">
-                            <option value="">Hari</option>
-                            <option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamos">Kamis</option>
-                            <option value="Jumat">Jumat</option>
+                        <select class="form-control @error('hari') is-invalid @enderror" name="hari" id="">
+                            <option value="Senin" @if($kumpul->hari == "Senin") selected @endif>Senin</option>
+                            <option value="Selasa" @if($kumpul->hari == "Selasa") selected @endif>Selasa</option>
+                            <option value="Rabu" @if($kumpul->hari == "Rabu") selected @endif>Rabu</option>
+                            <option value="Kamis" @if($kumpul->hari == "Kamis") selected @endif>Kamis</option>
+                            <option value="Jumat" @if($kumpul->hari == "Jumat") selected @endif>Jumat</option>
                         </select>
                     </div>
                 </div>                
