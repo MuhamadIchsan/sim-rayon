@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Absenpiket;
 use Illuminate\Http\Request;
 
 class AbsenPiketController extends Controller
@@ -13,7 +14,10 @@ class AbsenPiketController extends Controller
      */
     public function index()
     {
-        return view('absen_piket.index');
+        return view('absen_piket.index', [
+            'nomor' => 1,
+            'data' => Absenpiket::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**
@@ -34,7 +38,9 @@ class AbsenPiketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        auth()->user()->absenpikets()->create($data);
+        return redirect()->route('absen_piket.index');  
     }
 
     /**
@@ -56,7 +62,9 @@ class AbsenPiketController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('absen_piket.edit', [
+            'piket' => Piket::findOrFail($id)
+        ]);
     }
 
     /**
@@ -68,7 +76,8 @@ class AbsenPiketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Piket::findOrFail($id)->update($request->all());
+        return redirect()->route('piket.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class AbsenPiketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Piket::findOrFail($id)->delete();
+        return back();
     }
 }
