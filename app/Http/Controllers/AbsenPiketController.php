@@ -82,13 +82,7 @@ class AbsenPiketController extends Controller
     public function update(Request $request, $id)
     {
         $data = Absenpiket::findOrFail($id);
-        $data->update([
-            'nis' => $request->nis,
-            'nama' => $request->nama,
-            'user_id' => auth()->user()->id,
-            'hari' => $request->hari,
-            'kehadiran' => $request->kehadiran
-        ]);
+        $data->update($request->all());
         return redirect()->route('absen_piket.index')->with('notif', 'Data diupdate'); 
     }
 
@@ -100,7 +94,7 @@ class AbsenPiketController extends Controller
      */
     public function destroy($id)
     {
-        Piket::findOrFail($id)->delete();
+        Absenpiket::findOrFail($id)->delete();
         return back()->with('notif', 'Data dihapus');
     }
 }
