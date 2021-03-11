@@ -16,7 +16,7 @@ class AbsenPiketController extends Controller
     {
         return view('absen_piket.index', [
             'nomor' => 1,
-            'data' => Absenpiket::where('user_id', auth()->user()->id)->get()
+            'absenpikets' => Absenpiket::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -38,9 +38,14 @@ class AbsenPiketController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        auth()->user()->absenpikets()->create($data);
-        return redirect()->route('absen_piket.index');  
+        Absenpiket::create([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'user_id' => auth()->user()->id,
+            'hari' => $request->hari,
+            'kehadiran' => $request->kehadiran
+        ]);
+        return redirect()->route('absen_piket.index')->with('notif', 'Data disimpan');  
     }
 
     /**
