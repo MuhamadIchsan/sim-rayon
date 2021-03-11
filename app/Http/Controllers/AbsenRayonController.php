@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Absenkehadiran;
 use Illuminate\Http\Request;
 
 class AbsenRayonController extends Controller
@@ -13,7 +14,10 @@ class AbsenRayonController extends Controller
      */
     public function index()
     {
-        return view('absen_rayon.index');
+        return view('absen_rayon.index', [
+            'nomor' => 1,
+            'absenrayons' => Absenkehadiran::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**
@@ -34,7 +38,14 @@ class AbsenRayonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Absenkehadiran::create([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'user_id' => auth()->user()->id,
+            'tanggal' => $request->tanggal,
+            'kehadiran' => $request->kehadiran
+        ]);
+        return redirect()->route('absen_rayon.index')->with('notif', 'Data disimpan');
     }
 
     /**
@@ -56,7 +67,9 @@ class AbsenRayonController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('absen_rayon.edit', [
+            'data' => Absenkehadiran::findOrFail($id)
+        ]);
     }
 
     /**
@@ -68,7 +81,9 @@ class AbsenRayonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Absenkehadiran::findOrFail($id);
+        $data->update($request->all());
+        return redirect()->route('absen_rayon.index')->with('notif', 'Data diupdate'); 
     }
 
     /**
@@ -79,6 +94,7 @@ class AbsenRayonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Absenkehadiran::findOrFail($id)->delete();
+        return back()->with('notif', 'Data dihapus');
     }
 }
