@@ -18,7 +18,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <h5>Jadwal Piket</h5>                        
+                    <h5>Absen Piket</h5>                        
                     <p>{{ now()->format('d,M Y') }}</p> 
                 </div>                
             </div>

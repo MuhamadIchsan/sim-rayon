@@ -3,7 +3,7 @@
 @section('title','Absen Piket Siswa')
 @section('content')
     <div class="container-fluid">
-        <a href="{{ route('piket.index') }}" class="btn btn-danger mb-4"><i class="fas fa-arrow-left"></i>    Kembali</a>
+        <a href="{{ route('absen_piket.index') }}" class="btn btn-danger mb-4"><i class="fas fa-arrow-left"></i>    Kembali</a>
         <div class="card">
             <div class="card-header">
                 <h5>Tambah Jadwal Piket</h5>
