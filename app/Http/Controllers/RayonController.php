@@ -39,7 +39,7 @@ class RayonController extends Controller
     public function store(Request $request)
     {
         Rayon::create($request->all());
-        return redirect()->route('rayon.index');
+        return redirect()->route('rayon.index')->with('notif', 'Data disimpan');
     }
 
     /**
@@ -85,6 +85,6 @@ class RayonController extends Controller
     public function destroy($id)
     {
         Rayon::findOrFail($id)->delete();
-        return back();
+        return back()->with('notif', 'Data dihapus');
     }
 }
