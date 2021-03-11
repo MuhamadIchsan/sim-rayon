@@ -51,8 +51,8 @@
                             <td>{{ $data->hari }}</td>   
                             <td>{{ $data->kehadiran }}</td>                            
                             <td>
-                                <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
-                                <form action="" class="d-inline">
+                                <a href="{{ route('absen_piket.edit', $data->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
+                                <form action="{{ route('absen_piket.destroy', $data->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
