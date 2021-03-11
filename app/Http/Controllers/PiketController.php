@@ -40,7 +40,7 @@ class PiketController extends Controller
     {
         $data = $request->all();
         auth()->user()->pikets()->create($data);
-        return redirect()->route('piket.index');   
+        return redirect()->route('piket.index')->with('notif', 'Data disimpan');   
     }
 
     /**
@@ -77,7 +77,7 @@ class PiketController extends Controller
     public function update(Request $request, $id)
     {
         Piket::findOrFail($id)->update($request->all());
-        return redirect()->route('piket.index');
+        return redirect()->route('piket.index')->with('notif', 'Data diupdate');
     }
 
     /**
@@ -89,6 +89,6 @@ class PiketController extends Controller
     public function destroy($id)
     {
         Piket::findOrFail($id)->delete();
-        return back();
+        return back()->with('notif', 'Data dihapus');
     }
 }
