@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Kumpul::class);
     }
+
+    public function absenpikets()
+    {
+        return $this->hasMany(Piket::class);
+    }
+
+    public function absenkehadirans()
+    {
+        return $this->hasMany(Piket::class);
+    }
 }
