@@ -42,13 +42,14 @@
                         <tbody>
 
                         <!-- foreach -->
+                        @foreach ($absenpikets as $data)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>11806718</td>
-                            <td>Mark</td>
-                            <td>Cisarua 1</td>
-                            <td>Selasa</td>                            
-                            <td>Tidak Hadir</td>                            
+                            <th scope="row">{{ $nomor++ }}</th>
+                            <td>{{ $data->nis }}</td>
+                            <td>{{ $data->nama }}</td>
+                            <td>{{ $data->user->nama_rayon }}</td>                         
+                            <td>{{ $data->hari }}</td>   
+                            <td>{{ $data->kehadiran }}</td>                            
                             <td>
                                 <a href="" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>
                                 <form action="" class="d-inline">
@@ -58,6 +59,7 @@
                                 </form>
                             </td>
                           </tr>    
+                          @endforeach
                         <!-- endforeach -->
 
                         </tbody>
