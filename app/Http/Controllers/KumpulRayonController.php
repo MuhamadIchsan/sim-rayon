@@ -40,7 +40,7 @@ class KumpulRayonController extends Controller
     {
         $data = $request->all();
         auth()->user()->kumpuls()->create($data);
-        return redirect()->route('kumpul_rayon.index'); 
+        return redirect()->route('kumpul_rayon.index')->with('notif', 'Data disimpan'); 
     }
 
     /**
@@ -77,7 +77,7 @@ class KumpulRayonController extends Controller
     public function update(Request $request, $id)
     {
         Kumpul::findOrFail($id)->update($request->all());
-        return redirect()->route('kumpul_rayon.index');
+        return redirect()->route('kumpul_rayon.index')->with('notif', 'Data diupdate');
     }
 
     /**
@@ -89,6 +89,6 @@ class KumpulRayonController extends Controller
     public function destroy($id)
     {
         Kumpul::findOrFail($id)->delete();
-        return back();
+        return back()->with('notif', 'Data dihapus');
     }
 }
