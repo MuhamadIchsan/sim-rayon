@@ -13,6 +13,10 @@ Route::middleware('auth')->group(function(){
     Route::resource('absen_rayon','AbsenRayonController');
     Route::resource('rayon','RayonController');
     Route::resource('user','UserController');
+    Route::get('/jadwalpiket', 'PenggunaController@jadwal_piket')->name('pengguna.jadwal_piket');
+    Route::get('/jadwalkumpul', 'PenggunaController@jadwal_kumpul')->name('pengguna.jadwal_kumpul');
+    Route::get('/absenpiket', 'PenggunaController@absen_piket')->name('pengguna.absen_piket');
+    Route::get('/absenrayon', 'PenggunaController@absen_rayon')->name('pengguna.absen_rayon');
 });
 Auth::routes();
 
