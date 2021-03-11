@@ -15,6 +15,11 @@ class CreateAbsenkehadiransTable extends Migration
     {
         Schema::create('absenkehadirans', function (Blueprint $table) {
             $table->id();
+            $table->string('nis');
+            $table->string('nama');
+            $table->string('user_id');
+            $table->string('tanggal');
+            $table->string('kehadiran');
             $table->timestamps();
         });
     }

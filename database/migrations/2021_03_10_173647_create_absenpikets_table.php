@@ -15,6 +15,11 @@ class CreateAbsenpiketsTable extends Migration
     {
         Schema::create('absenpikets', function (Blueprint $table) {
             $table->id();
+            $table->string('nis');
+            $table->string('nama');
+            $table->string('user_id');
+            $table->string('hari');
+            $table->string('kehadiran');
             $table->timestamps();
         });
     }
