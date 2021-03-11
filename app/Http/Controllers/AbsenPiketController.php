@@ -68,7 +68,7 @@ class AbsenPiketController extends Controller
     public function edit($id)
     {
         return view('absen_piket.edit', [
-            'piket' => Piket::findOrFail($id)
+            'data' => Absenpiket::findOrFail($id)
         ]);
     }
 
@@ -81,8 +81,15 @@ class AbsenPiketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Piket::findOrFail($id)->update($request->all());
-        return redirect()->route('piket.index');
+        $data = Absenpiket::findOrFail($id);
+        $data->update([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'user_id' => auth()->user()->id,
+            'hari' => $request->hari,
+            'kehadiran' => $request->kehadiran
+        ]);
+        return redirect()->route('absen_piket.index')->with('notif', 'Data diupdate'); 
     }
 
     /**
@@ -94,6 +101,6 @@ class AbsenPiketController extends Controller
     public function destroy($id)
     {
         Piket::findOrFail($id)->delete();
-        return back();
+        return back()->with('notif', 'Data dihapus');
     }
 }
