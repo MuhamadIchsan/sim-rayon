@@ -3,7 +3,7 @@
 @section('title','User')
 @section('content')
     <div class="container-fluid">
-        <a href="{{ route('piket.index') }}" class="btn btn-danger mb-4"><i class="fas fa-arrow-left"></i>    Kembali</a>
+        <a href="{{ route('user.index') }}" class="btn btn-danger mb-4"><i class="fas fa-arrow-left"></i>    Kembali</a>
         <div class="card">
             <div class="card-header">
                 <h5>Edit User</h5>
@@ -36,7 +36,7 @@
                     <div class="col-lg-8">
                         <select class="form-control" name="role" id="">
                             <option value="admin" @if($user->role == "admin") selected @endif>admin</option>
-                            <option value="guru"  @if($user->role == "guru") selected @endif>guru</option>
+                            <option value="kesiswaan"  @if($user->role == "kesiswaan") selected @endif>kesiswaan</option>
                             <option value="pemray"  @if($user->role == "pemray") selected @endif>pemray</option>
                             <option value="bkk"  @if($user->role == "bkk") selected @endif>bkk</option>
                             <option value="kepsek"  @if($user->role == "kepsek") selected @endif>kepsek</option>                            

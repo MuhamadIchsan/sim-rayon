@@ -44,7 +44,7 @@
                         <select class="form-control" name="role" id="">
                             <option disabled selected>Pilih Role</option>
                             <option value="admin">admin</option>
-                            <option value="guru">guru</option>
+                            <option value="kesiswaan">kesiswaan</option>
                             <option value="pemray">pemray</option>
                             <option value="bkk">bkk</option>
                             <option value="kepsek">kepsek</option>                            
