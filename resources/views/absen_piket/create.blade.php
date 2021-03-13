@@ -42,7 +42,16 @@
                             <option value="Jumat">Jumat</option>
                         </select>
                     </div>
-                </div>                
+                </div>                  
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Tanggal</label>
+                    <div class="col-lg-8">
+                        <input type="date" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal">
+                        @error('tanggal')
+                        <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                </div>                 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Kehadiran</label>
                     <div class="col-lg-8">

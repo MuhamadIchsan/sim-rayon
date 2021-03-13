@@ -19,6 +19,7 @@ class CreateAbsenpiketsTable extends Migration
             $table->string('nama');
             $table->string('user_id');
             $table->string('hari');
+            $table->date('tanggal');
             $table->string('kehadiran');
             $table->timestamps();
         });

@@ -34,7 +34,8 @@
                             <th scope="col">NIS</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Rayon</th>                            
-                            <th scope="col">Hari</th>
+                            <th scope="col">Hari</th>                   
+                            <th scope="col">Tanggal</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                           </tr>
@@ -48,7 +49,8 @@
                             <td>{{ $data->nis }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->user->nama_rayon }}</td>                         
-                            <td>{{ $data->hari }}</td>   
+                            <td>{{ $data->hari }}</td>                  
+                            <td>{{ $data->tanggal }}</td>   
                             <td>{{ $data->kehadiran }}</td>                            
                             <td>
                                 <a href="{{ route('absen_piket.edit', $data->id) }}" class="btn btn-info"><i class="fas fa-edit"></i>Edit</a>

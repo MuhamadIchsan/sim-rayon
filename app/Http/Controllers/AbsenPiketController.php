@@ -43,6 +43,7 @@ class AbsenPiketController extends Controller
             'nama' => $request->nama,
             'user_id' => auth()->user()->id,
             'hari' => $request->hari,
+            'tanggal' => $request->tanggal,
             'kehadiran' => $request->kehadiran
         ]);
         return redirect()->route('absen_piket.index')->with('notif', 'Data disimpan');  
