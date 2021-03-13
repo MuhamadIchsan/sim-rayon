@@ -44,7 +44,7 @@
                 <a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>Tambah User</span></a>
               </li>       
               @endif 
-              @if(auth()->user()->role == "bkk" || auth()->user()->role == "guru" || auth()->user()->role == "kepsek")
+              @if(auth()->user()->role == "bkk" || auth()->user()->role == "kesiswaan" || auth()->user()->role == "kepsek")
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar"></i><span>Jadwal</span></a>
                 <ul class="dropdown-menu">
