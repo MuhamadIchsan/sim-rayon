@@ -3,7 +3,7 @@
 @section('title','User')
 @section('content')
     <div class="container-fluid">
-        <a href="{{ route('piket.index') }}" class="btn btn-danger mb-4"><i class="fas fa-arrow-left"></i>    Kembali</a>
+        <a href="{{ route('user.index') }}" class="btn btn-danger mb-4"><i class="fas fa-arrow-left"></i>    Kembali</a>
         <div class="card">
             <div class="card-header">
                 <h5>Tambah User</h5>
